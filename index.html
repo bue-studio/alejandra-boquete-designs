@@ -261,7 +261,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .cs>div+div{padding-left:24px;border-left:1px solid var(--hair)}
 .cs b{font:400 20px/1.2 var(--serif)}
 .cs span{font-size:13px;color:var(--muted)}
-.cs .tlink{margin-left:24px;justify-self:start}
+.cs .tlink{justify-self:start}
+.cs-links{display:grid;gap:10px;justify-items:start;margin-left:24px}
 .press{display:flex;align-items:center;gap:22px;padding:22px 0 0;flex-wrap:wrap}
 .press>span{font-size:12.5px;color:var(--muted);margin-right:10px}
 .press i{width:118px;height:30px;border:1px dashed var(--stone);border-radius:2px;display:grid;place-items:center;font-style:normal;font-size:11px;color:var(--stone)}
@@ -269,7 +270,13 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .mock{position:absolute;z-index:3;left:16px;top:16px;background:rgba(246,246,243,.94);color:var(--indigo);border:1px dashed var(--indigo);font-size:12.5px;padding:7px 12px}
 
 /* ---------------- footer ---------------- */
-.ftr{border-top:1px solid var(--hair);padding-top:clamp(48px,6vw,88px)}
+.ftr{--ink:var(--cotton);--hair:rgba(246,246,243,.18);--muted:rgba(246,246,243,.66);background:var(--indigo);color:var(--cotton);padding-top:0}
+.ftr ::selection{background:var(--cotton);color:var(--indigo)}
+.ftr .cc{padding-block:clamp(28px,3vw,44px) clamp(40px,4.5vw,64px)}
+.ftr .cs{border-top:0}
+.ftr .cs span{color:var(--muted)}
+.ftr .news input::placeholder{color:rgba(246,246,243,.55)}
+.ftr .fcols a:hover{color:var(--stone)}
 .news{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:32px 80px;align-items:end;padding-bottom:56px;border-bottom:1px solid var(--hair)}
 .news h2{margin:0;font:300 clamp(28px,3vw,44px)/1.1 var(--serif);max-width:22ch}
 .news form{display:flex;gap:16px;border-bottom:1px solid var(--ink);padding-bottom:10px}
@@ -279,7 +286,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .fcols h4{margin:0 0 14px;font:400 12.5px/1 var(--sans);color:var(--muted)}
 .fcols ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14.5px}
 .fcols a:hover{color:var(--indigo)}
-.giant{width:100%;aspect-ratio:2135/83;background:var(--indigo);-webkit-mask:var(--logo) center/contain no-repeat;mask:var(--logo) center/contain no-repeat;margin:8px 0 24px}
+.giant{width:100%;aspect-ratio:2135/83;background:var(--cotton);-webkit-mask:var(--logo) center/contain no-repeat;mask:var(--logo) center/contain no-repeat;margin:8px 0 24px}
 .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:26px;font-size:12.5px;color:var(--muted)}
 
 /* ---------------- overlays ---------------- */
@@ -328,7 +335,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .cs{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cs>div:nth-child(3){padding-left:0;border-left:0}
   .cs>div:nth-child(n+3){border-top:1px solid var(--hair)}
-  .cs .tlink{grid-column:1/-1;margin:16px 0}
+  .cs-links{grid-column:1/-1;margin:16px 0;display:flex;gap:24px}
   .mega-cols{grid-template-columns:repeat(4,1fr)}
   .gem{grid-template-columns:1fr 1fr}
   .gem-shop{grid-column:1/-1;grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -428,7 +435,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 <div class="mega" id="mega-explore" role="region" aria-label="Explore">
   <div class="mega-grid">
     <div><h4>The house</h4><ul><li><a href="#designer">About Alejandra</a></li><li><a href="#">Journal</a></li><li><a href="#gems">Gemstone guide</a></li><li><a href="#charm">The Charm Bar</a></li></ul></div>
-    <div><h4>Client care</h4><ul><li><a href="#">Contact</a></li><li><a href="#care">Book an appointment*</a></li><li><a href="#">Shipping and returns</a></li><li><a href="#">Size guide</a></li><li><a href="#">Jewelry care</a></li></ul></div>
+    <div><h4>Client care</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Contact</a></li><li><a href="#care">Book an appointment*</a></li><li><a href="#">Shipping and returns</a></li><li><a href="#">Size guide</a></li><li><a href="#">Jewelry care</a></li></ul></div>
     <div><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li><li><a href="#">TikTok</a></li></ul></div>
     <div class="mega-feat two">
       <a href="#designer"><span class="ph" style="background:url('https://cdn.shopify.com/s/files/1/0274/5205/files/collage_grande.png?v=1520778466') no-repeat 39.41% 17.3%/487.8% auto"></span>About Alejandra</a>
@@ -551,20 +558,19 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   </div>
 </section>
 
-<!-- CLIENT CARE (slim) -->
-<section class="wrap cc" id="care">
+
+</main>
+
+<footer class="ftr wrap">
+<div class="cc" id="care">
   <div class="cs">
     <div><b>Ships in 24 hours</b><span>Delivered in 5 to 10 business days</span></div>
     <div><b>30-day returns</b><span>Return or exchange within 30 days</span></div>
     <div><b>Custom design*</b><span>Designed around your stone or symbol</span></div>
     <div><b>Private appointments*</b><span>In Miami Beach or by video call</span></div>
-    <a href="#" class="tlink">Write to Alejandra</a>
+    <div class="cs-links"><a href="#" class="tlink">Read our FAQ</a><a href="#" class="tlink">Write to Alejandra</a></div>
   </div>
-</section>
-
-</main>
-
-<footer class="ftr wrap">
+</div>
   <div class="news">
     <h2>New pieces and private sales, a few times a year.</h2>
     <form id="nl"><label for="nlEmail" style="position:absolute;left:-9999px">Email address</label><input id="nlEmail" type="email" placeholder="Your email address" autocomplete="email"><button type="submit">Subscribe</button></form>
@@ -572,7 +578,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <div class="fcols">
     <div><h4>Shop</h4><ul><li><a href="#edit">New in</a></li><li><a href="#">Necklaces</a></li><li><a href="#">Charms &amp; pendants</a></li><li><a href="#">Chains</a></li><li><a href="#">Rings &amp; earrings</a></li><li><a href="#">Bracelets</a></li></ul></div>
     <div><h4>Discover</h4><ul><li><a href="#charm">The Charm Bar</a></li><li><a href="#">Collections</a></li><li><a href="#gems">Gemstone guide</a></li><li><a href="#designer">About Alejandra</a></li><li><a href="#">Journal</a></li></ul></div>
-    <div><h4>Client care</h4><ul><li><a href="#care">Book an appointment*</a></li><li><a href="#">Shipping and returns</a></li><li><a href="#">Size guide</a></li><li><a href="#">Jewelry care</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div><h4>Client care</h4><ul><li><a href="#">FAQ</a></li><li><a href="#care">Book an appointment*</a></li><li><a href="#">Shipping and returns</a></li><li><a href="#">Size guide</a></li><li><a href="#">Jewelry care</a></li><li><a href="#">Contact</a></li></ul></div>
     <div><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li><li><a href="#">TikTok</a></li></ul></div>
   </div>
   <div class="giant" role="img" aria-label="Alejandra Boquete Designs"></div>
@@ -597,7 +603,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 </div>
 <div class="mmenu" id="mmenu">
   <ul><li><a href="#edit" data-close>New in</a></li><li><a href="#" data-close>Necklaces</a></li><li><a href="#" data-close>Charms</a></li><li><a href="#" data-close>Chains</a></li><li><a href="#diamonds" data-close>Fine diamonds</a></li><li><a href="#charm" data-close>The Charm Bar</a></li><li><a href="#gems" data-close>Gemstones</a></li></ul>
-  <div class="small"><a href="#designer" data-close>About Alejandra</a><a href="#" data-close>Journal</a><a href="#" data-close>Contact</a><a href="#care" data-close>Book an appointment*</a><a href="#" data-close>Account</a><button data-open="search" style="text-align:left">Search</button></div>
+  <div class="small"><a href="#designer" data-close>About Alejandra</a><a href="#" data-close>Journal</a><a href="#" data-close>FAQ</a><a href="#" data-close>Contact</a><a href="#care" data-close>Book an appointment*</a><a href="#" data-close>Account</a><button data-open="search" style="text-align:left">Search</button></div>
   <div class="mm-mark" aria-hidden="true"></div>
 </div>
 <div class="toast" id="toast"></div>
