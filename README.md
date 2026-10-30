@@ -1,6 +1,6 @@
 # Alejandra Boquete Designs
 
-Maqueta visual e interactiva del home, versión 16.
+Maqueta visual e interactiva del home, versión 17.
 
 Sitio: https://bue-studio.github.io/alejandra-boquete-designs/
 
